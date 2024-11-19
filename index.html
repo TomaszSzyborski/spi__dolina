@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spierdolina</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body class="bg-gray-900 text-white flex items-center justify-center min-h-screen">
+    <div class="container mx-auto p-5">
+        <div class="text-yellow-400 text-2xl mb-4 text-center">
+            <h1>Jest:</h1>
+            <div id="calendar" class="text-lg mb-2 text-center"></div>
+        </div>
+        <div class="digital-clock bg-gray-800 p-5 rounded-lg shadow-lg text-center text-5xl">
+            <span id="digital-clock"></span>
+        </div>
+        <div class="text-yellow-400 text-center">
+            <h1 class="text-4xl">Od ostatniej spierdoliny w</h1>
+            <h1 id="organization-name" class="text-6xl"></h1>
+            <h1 class="text-4xl">minęło:</h1>
+        </div>
+        <div class="digital-clock bg-gray-800 p-5 rounded-lg shadow-lg text-center text-5xl">
+            <span id="fuckup-time-elapsed">00:00:00</span>
+        </div>
+        <!-- Nameday Widget -->
+        <div id="name-days" class="text-lg mb-4 text-center"></div>
+
+        <!-- Weather Widget -->
+        <div id="weather-widget" class="mb-4 text-center"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
