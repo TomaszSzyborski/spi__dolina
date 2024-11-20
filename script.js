@@ -25,7 +25,7 @@ function fetchWeather() {
 const hash = window.location.hash.substring(1);
 const name = decodeURIComponent(DOMPurify.sanitize(hash));
 function home(){
-        const location = `${window.location.href.split('#')[0]}#MojaOrganizacja`
+        const location = `${window.location.origin}#MojaOrganizacja`
         document.getElementById("main").replaceChildren();
         document.getElementById("main").classList.add("max-w-xl");
         document.getElementById("main").innerHTML =
