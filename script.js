@@ -41,7 +41,7 @@ function home(){
             <div>
                 Jak przedstawiono poniżej:
             </div>
-            <a href="${location}" class="text-blue-200">${location}</>
+            <a href="${location}" class="text-blue-200 break-all">${location}</>
         </div>
         `
 
