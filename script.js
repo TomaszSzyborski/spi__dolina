@@ -1,6 +1,18 @@
 let latitude = 52.2297; // Default latitude for Warsaw
 let longitude = 21.0122; // Default longitude for Warsaw
 
+function  toTextualDescription(degree){
+    if (degree>337.5) return 'Północny';
+    if (degree>292.5) return 'Północno-Zachodni';
+    if(degree>247.5) return 'Zachodni';
+    if(degree>202.5) return 'Południowo-Zachodni';
+    if(degree>157.5) return 'Południowy';
+    if(degree>122.5) return 'Południowo-Wchodni';
+    if(degree>67.5) return 'Wschodni';
+    if(degree>22.5){return 'Północno-Wschodni';}
+    return 'Północny';
+}
+
 // Function to get current position
 function getCurrentPosition() {
     return new Promise((resolve, reject) => {
@@ -65,11 +77,11 @@ async function fetchWeather(latitude, longitude) {
         const data = await response.json();
         const weather = data.current_weather;
 
+        const windDirection = toTextualDescription(weather.winddirection)
         document.getElementById("weather-widget").innerHTML = `
             <h2 class="text-xl">Aktualna pogoda w: ${cityName}:</h2>
             <p>Temperatura: ${weather.temperature} °C</p>
-            <p>Wiatr: ${weather.windspeed} km/h</p>
-            <p>Stan: ${weather.weathercode}</p>
+            <p>Wiatr ${windDirection} ${weather.windspeed} km/h</p>
         `;
     } catch (error) {
         document.getElementById("weather-widget").innerText = 'Pogoda: Brak danych';
