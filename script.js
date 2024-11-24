@@ -70,6 +70,7 @@ async function getNearestRiver(latitude, longitude) {
 // Fetch weather data
 async function fetchWeather(latitude, longitude) {
     const cityName = await getCityName(latitude, longitude);
+    //https://api.open-meteo.com/v1/forecast?latitude=52.2297&longitude=21.0122&current_weather=true&timezone=Europe/Warsaw
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&timezone=Europe/Warsaw`;
 
     try {
@@ -168,7 +169,19 @@ if (!name) {
                             .then(data => {
                                 const station = data.stations[0];
                                 const level = station.currentState.value;
-                                const state = station.statusCode;
+                                let state;
+                                switch(station.statusCode){
+                                    case "low":
+                                        state = "niski";
+                                        break;
+                                    case "medium":
+                                        state = "średni";
+                                        break;
+                                    case "high":
+                                        state = "wysoki";
+                                        break;
+                                }
+
                                 console.log(data)
                                 document.getElementById("water").innerHTML = `
                                     <div>
@@ -181,6 +194,25 @@ if (!name) {
         });
 }
 
+// Function to show the cookie popup
+function showCookiePopup() {
+    document.getElementById('cookie-popup').classList.remove('hidden');
+}
+
+// Function to handle accepting cookies
+function understood() {
+    document.getElementById('cookie-popup').classList.add('hidden');
+}
+window.onload = () => {
+    const cookies = document.cookie.split("; ");
+    for (let cookie of cookies) {
+        const eqPos = cookie.indexOf("=");
+        const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+    }
+};
+
 window.addEventListener("hashchange", function() {
     window.location.reload();
 });
+window.onload = showCookiePopup;
