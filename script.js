@@ -111,6 +111,14 @@ function home() {
             Jak przedstawiono poniżej:
         </div>
         <a href="${location}" class="text-blue-200 break-all">${location}</a>
+        <div id="cookie-popup"
+         class="fixed bottom-0 left-0 w-full h-1/3 bg-black bg-opacity-80 text-white px-6 py-8 flex flex-col justify-center items-center hidden">
+            <h2 class="text-2xl font-semibold mb-4">Informacja o ciasteczkach</h2>
+            <p class="text-lg mb-6">Ta strona NIE korzysta z plików Cookies.</p>
+            <button class="bg-yellow-400 text-white px-6 py-3 rounded-md mr-4 transition-colors hover:bg-green-600 focus:outline-none"
+                    onclick="understood()">OK
+            </button>
+        </div>
     </div>
     `;
 }
